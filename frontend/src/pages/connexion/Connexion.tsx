@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { useFormik } from "formik";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import Lottie from 'lottie-react';
@@ -9,6 +11,8 @@ import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import s from "./connexion.module.css";
 
 const Connexion: React.FC = () => {
+
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -25,10 +29,23 @@ const Connexion: React.FC = () => {
                 .required("Le mot de passe est requis"),
         }),
         onSubmit: (values) => {
-            console.log("Formulaire soumis avec les valeurs : ", values);
-        },
-    });
+            axios.post('url nra martinoh', values)
+                .then((response) => {
 
+                    if (response.data) {
+                        console.log("Connexion réussie : ", response.data);
+                        navigate('/home');
+                    } else {
+                        alert('Veuillez vérifier vos informations');
+                    }
+                })
+                .catch((error) => {
+                    console.log("Erreur :", error);
+
+                });
+        },
+
+    });
     return (
         <Fragment>
             <div className={`${s.screen} overflow-hidden`}>
@@ -148,7 +165,7 @@ const Connexion: React.FC = () => {
                             type="submit"
                             className={`${s.inscrire} bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline w-full `}
                         >
-                             Se connecter
+                            Se connecter
                         </button>
                     </form>
 

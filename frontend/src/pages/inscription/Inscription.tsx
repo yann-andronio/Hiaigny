@@ -7,6 +7,7 @@ import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import s from "./inscription.module.css";
 import { motion } from 'framer-motion';
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 interface FormValues {
@@ -33,6 +34,8 @@ interface FormErrors {
 const Inscription: FC = () => {
     const [role, setRole] = useState<'patient' | 'doctor'>('patient');
     const [doctorhita, setdoctorhita] = useState<boolean>(false);
+    const Navigate = useNavigate();
+
     const [inputs, setInputs] = useState<FormValues>({
         email: '',
         password: '',
@@ -92,18 +95,20 @@ const Inscription: FC = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault(); 
         if (validate()) {
-            try {
-
-                const response = await axios.post('url nra martino', inputs);
-                console.log("Formulaire soumis avec succès :", response.data);
-            } catch (error) {
-                console.error("Erreur lors de la soumission du formulaire :", error);
-            }
+            axios.post('url nra martino', inputs)
+                .then((response) => {
+                    console.log("succes:", response.data);
+                    Navigate('/')
+                })
+                .catch((error) => {
+                    console.error("Erreu :", error);
+                });
         }
     };
+    
 
     return (
         <Fragment>

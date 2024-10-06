@@ -2,6 +2,7 @@ import  { Fragment } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Connexion from './pages/connexion/Connexion';
+import Inscription from './pages/inscription/Inscription';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Connexion />} />
-          <Route path="/user-info" element={<></>} />
+          <Route path="/inscription" element={<Inscription />} />
     
         </Routes>
       </BrowserRouter>

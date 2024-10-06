@@ -3,6 +3,7 @@
     justify-content: center;
     height: 100vh;
     background-color: #F0F4F8;
+    /* background: linear-gradient(to right, #3B82F6, #2DD4BF); */
 }
 
 .sary {
@@ -27,6 +28,12 @@
     color: #f1f5f9;
 }
 
+.droite {
+    /* background-color: #F0F4F8; */
+    background-color: white;
+
+}
+
 
 .forme {
     /* background-color: rgba(255, 255, 255, 0.9); */
@@ -35,9 +42,15 @@
     border-radius: 8px;
 }
 
-/* .connexion{
-    color: black;
-} */
+.connexion {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+}
+
+
+
 
 
 input[type="email"],
@@ -51,10 +64,10 @@ input[type="password"] {
     outline: none;
 }
 
-input:focus {
+/* input:focus {
     border-color: #38bdf8;
     box-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
-}
+} */
 
 /* Bouton de soumission */
 .submitButton {
@@ -106,6 +119,64 @@ input:focus {
     outline: none;
 }
 
+
+
+
+.formradio {
+
+    accent-color: green;
+}
+
+
+.formradio:checked {
+    background-color: green;
+}
+
+
+.formradio+span {
+    color: #4A5568;
+}
+
+.deco {
+    transform: rotate(100deg);
+    top: -48px;
+    position: absolute;
+    right: -4rem;
+
+}
+
+.deco2 {
+    transform: rotate(-71deg);
+    position: absolute;
+    right: -69px;
+    bottom: -94px;
+}
+
+.deco3 {
+    transform: rotate(-23deg);
+    position: absolute;
+    left: -119px;
+    top: -75px;
+
+}
+
+.deco4 {
+    transform: rotate(93deg);
+    position: absolute;
+    left: -119px;
+    bottom: -101px;
+
+}
+
+.inscrire{
+    transition: 0.3s;
+}
+.inscrire:hover{
+    transition: 0.3s;
+}
+
+
+
 /* Styles spécifiques aux écrans tablette */
 @media (min-width: 768px) and (max-width: 1024px) {
     .sary {
@@ -123,6 +194,7 @@ input:focus {
     .sary {
         display: none;
     }
+
 }
 
 /* Pour les très petits écrans */
@@ -130,5 +202,22 @@ input:focus {
     .forme {
         background-color: transparent;
         box-shadow: none;
+    }
+
+    .deco {
+        transform: rotate(100deg);
+        top: -48px;
+        position: absolute;
+        right: -7rem;
+        width: 50%;
+    
+    }
+    
+    .deco2 {
+        transform: rotate(-71deg);
+        position: absolute;
+        right: -100px;
+        bottom: -100px;
+        width: 60%;
     }
 }

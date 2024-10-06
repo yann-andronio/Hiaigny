@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Lottie from 'lottie-react';
 import test from "../../lotties/1.json";
 import { FcGoogle } from "react-icons/fc";
-import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi"; 
+import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import { useTranslation } from 'react-i18next';
 import s from "./connexion.module.css";
 
@@ -33,8 +33,8 @@ const Connexion: React.FC = () => {
 
     return (
         <Fragment>
-            <div className={`${s.screen} flex bg-gradient-to-r from-blue-500 to-teal-400 h-screen`}>
-                <div className={`${s.sary} hidden md:block md:w-1/2 lottie-background`}>
+            <div className={`${s.screen}`}>
+                <div className={`${s.sary} hidden lg:block md:w-1/2 lottie-background`}>
                     <div className={`${s.lotti}`}>
                         <Lottie animationData={test} />
                     </div>
@@ -51,9 +51,9 @@ const Connexion: React.FC = () => {
                 </div>
 
                 <div className={`${s.droite} w-full md:w-1/2 flex flex-col justify-center items-center`}>
-                    <h2 className={`${s.connexion} text-4xl font-bold mb-6 text-white`}>{t("login")}</h2>
+                    <h2 className={`${s.connexion} text-4xl font-bold mb-6 `}>{t("login")}</h2>
 
-                    <form className={`bg-white bg-opacity-80 shadow-lg rounded-lg p-8 mb-4 w-full max-w-lg`} onSubmit={formik.handleSubmit}>
+                    <form className={`${s.forme}  rounded-lg p-8 mb-4 w-full max-w-lg`} onSubmit={formik.handleSubmit}>
                         <div className="logo text-center mb-4">
                             <h1 className="text-3xl font-bold text-gray-800">{t("Logo")}</h1>
                         </div>

@@ -57,8 +57,8 @@ export default function Navbar() {
                 <NavLink to="/Ordonnance" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
                   Ordonnance
                 </NavLink>
-                <NavLink to="/Contact" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
-                  Contact
+                <NavLink to="/conseils" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
+                  Conseils
                 </NavLink>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import s from "./footers.module.css";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaGithub, FaTiktok } from 'react-icons/fa';
+// import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin, FaGithub, FaTiktok } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 import { ImPhone } from 'react-icons/im';
 import { BsFillChatDotsFill } from 'react-icons/bs';
@@ -20,17 +20,17 @@ export default function Footers() {
                         </div>
                         <div className='flex flex-col'>
                             <h6 className="mb-4 font-bold text-lg uppercase">Fonctionnalités</h6>
-                            <p className="mb-2 text-sm">🔹 Gestion des dossiers patients</p>
-                            <p className="mb-2 text-sm">🔹 Accès aux ordonnances</p>
-                            <p className="mb-2 text-sm">🔹 Tests de symptômes par IA</p>
-                            <p className="text-sm">🔹 Suggestions de repas sains</p>
+                            <p className="mb-2 text-sm"> Gestion des dossiers patients</p>
+                            <p className="mb-2 text-sm"> Accès aux ordonnances</p>
+                            <p className="mb-2 text-sm"> Tests de symptômes par IA</p>
+                            <p className="text-sm"> Suggestions de repas sains</p>
                         </div>
                         <div className='flex flex-col'>
                             <h6 className="mb-4 font-bold text-lg uppercase">À propos</h6>  
-                            <p className="mb-2 text-sm">🔹 Engagement pour un accès équitable</p>
-                            <p className="mb-2 text-sm">🔹 Confidentialité des données</p>
-                            <p className="mb-2 text-sm">🔹 Assistance 24/7</p>
-                            <p className="text-sm">🔹 Partenariats avec les hôpitaux locaux</p>
+                            <p className="mb-2 text-sm"> Engagement pour un accès équitable</p>
+                            <p className="mb-2 text-sm"> Confidentialité des données</p>
+                            <p className="mb-2 text-sm"> Assistance 24/7</p>
+                            <p className="text-sm"> Partenariats avec les hôpitaux locaux</p>
                         </div>
                         <div>
                             <h6 className="mb-4 font-bold text-lg uppercase">Contact</h6>

@@ -9,7 +9,7 @@ export default function Headerconseils() {
 
             {/* Blobs de décoration */}
             <img className={`${s.deco1} absolute hidden lg:block z-0 w-[250px] opacity-90`} src="./assets/image/deco/8.png" alt="Blob gauche" />
-            <img className="absolute bottom-[-60px] right-[-100px] z-0 w-[350px] opacity-90" src="./assets/image/deco/8.png" alt="Blob droit" />
+            <img className="absolute bottom-[-67px] right-[-106px] z-0 w-[350px] opacity-90" src="./assets/image/deco/8.png" alt="Blob droit" />
 
             {/* Section gauche */}
             <div className="flex-1 text-center md:text-left relative z-10" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-duration="1000">

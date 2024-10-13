@@ -20,7 +20,7 @@ const FeaturesSection = () => {
                         <div className="bg-[#22C55E] p-5 rounded-full inline-block mb-6">
                             <FaUserMd className="text-white text-5xl" />
                         </div>
-                        <h3 className="text-2xl font-semibold text-[#333333] mb-4">Gestion des Patients</h3>
+                        <h3 className="text-[1.1rem] font-semibold text-[#333333] mb-4">Gestion des Patients</h3>
                         <ul className="text-left space-y-3 text-[#4A5568]">
                             <li className="flex items-center">
                                 <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Suivi des patients.
@@ -39,13 +39,13 @@ const FeaturesSection = () => {
                         <div className="bg-[#ffbb33] p-5 rounded-full inline-block mb-6">
                             <FaHospital className="text-white text-5xl" />
                         </div>
-                        <h3 className="text-2xl font-semibold text-[#333333] mb-4">Consultation IA</h3>
+                        <h3 className="text-[1.1rem] font-semibold text-[#333333] mb-4">Consultation IA</h3>
                         <ul className="text-left space-y-3 text-[#4A5568]">
                             <li className="flex items-center">
                                 <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Tests de symptômes.
                             </li>
                             <li className="flex items-center">
-                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Recommandations d’hôpitaux.
+                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" />Hôpitaux conseillés.
                             </li>
                             <li className="flex items-center">
                                 <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> IA pour soins rapides.
@@ -58,7 +58,7 @@ const FeaturesSection = () => {
                         <div className="bg-[#4299E1] p-5 rounded-full inline-block mb-6">
                             <FaUtensils className="text-white text-5xl" />
                         </div>
-                        <h3 className="text-2xl font-semibold text-[#333333] mb-4">Suggestions Alimentaires</h3>
+                        <h3 className="text-[1.1rem] font-semibold text-[#333333] mb-4">Suggestions Alimentaires</h3>
                         <ul className="text-left space-y-3 text-[#4A5568]">
                             <li className="flex items-center">
                                 <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Aliments à éviter.
@@ -67,7 +67,7 @@ const FeaturesSection = () => {
                                 <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Conseils diététiques.
                             </li>
                             <li className="flex items-center">
-                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Basé sur les maladies courantes.
+                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" />Sur les maladies courantes.
                             </li>
                         </ul>
                     </div>
@@ -77,16 +77,16 @@ const FeaturesSection = () => {
                         <div className="bg-[#FF6347] p-5 rounded-full inline-block mb-6">
                             <FaMapMarkerAlt className="text-white text-5xl" />
                         </div>
-                        <h3 className="text-2xl font-semibold text-[#333333] mb-4">Recherche des Hôpitaux</h3>
+                        <h3 className="text-[1.1rem] font-semibold text-[#333333] mb-4">Recherche des Hôpitaux</h3>
                         <ul className="text-left space-y-3 text-[#4A5568]">
                             <li className="flex items-center">
-                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Trouvez les hôpitaux près de chez vous.
+                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Trouvez les hôpitaux 
                             </li>
                             <li className="flex items-center">
-                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Filtrer par spécialités médicales.
+                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" />  Spécialités médicales.
                             </li>
                             <li className="flex items-center">
-                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" /> Accédez aux avis des patients.
+                                <AiOutlineCheckCircle className="text-[#38B2AC] mr-3" />  Avis des patients.
                             </li>
                         </ul>
                     </div>

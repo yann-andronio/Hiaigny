@@ -124,8 +124,8 @@ export default function Navbar() {
           <DisclosureButton as={NavLink} to="/Ordonnance" className={({ isActive }: NavLinkProps) => (isActive ? "bg-[#4CAF50] text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-700 block hover:bg-[#4CAF50] hover:text-white rounded-md px-3 py-2 text-base font-medium")}>
             Ordonnance
           </DisclosureButton>
-          <DisclosureButton as={NavLink} to="/Contact" className={({ isActive }: NavLinkProps) => (isActive ? "bg-[#4CAF50] text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-700 block hover:bg-[#4CAF50] hover:text-white rounded-md px-3 py-2 text-base font-medium")}>
-            Contact
+          <DisclosureButton as={NavLink} to="/conseils" className={({ isActive }: NavLinkProps) => (isActive ? "bg-[#4CAF50] text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-700 block hover:bg-[#4CAF50] hover:text-white rounded-md px-3 py-2 text-base font-medium")}>
+          Conseils
           </DisclosureButton>
         </div>
       </DisclosurePanel>

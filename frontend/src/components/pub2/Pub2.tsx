@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { FaHospitalAlt, FaHeartbeat, FaBrain } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 const Pub2: React.FC = () => {
     return (
@@ -40,9 +41,9 @@ const Pub2: React.FC = () => {
             </div>
 
             <div className="mt-16">
-                <button className="bg-gradient-to-r from-[#22C55E] to-[#ffbb33] text-white py-4 px-12 rounded-full text-xl shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-200" data-aos="fade-up" data-aos-duration="2000">
+                <Link to="/teste" className="bg-gradient-to-r from-[#22C55E] to-[#ffbb33] text-white py-4 px-12 rounded-full text-xl shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-200" data-aos="fade-up" data-aos-duration="2000">
                     Commencer l'évaluation de santé
-                </button>
+                </Link>
             </div>
         </div>
 

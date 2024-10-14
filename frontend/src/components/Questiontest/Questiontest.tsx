@@ -2,41 +2,65 @@ import { Fragment } from "react/jsx-runtime";
 import s from "./questiontest.module.css";
 import { useState } from "react";
 import { Stepper, Step, Button } from "@material-tailwind/react";
-import { HomeIcon, HeartIcon, UserGroupIcon, } from "@heroicons/react/24/outline"; // Importation des icônes
+import { HomeIcon, HeartIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import { FaStethoscope, FaBookMedical } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; 
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-
-
-const Questiontest: React.FC = () => {
+const Questiontest: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
     const [activeStep, setActiveStep] = useState(0);
     const [isLastStep, setIsLastStep] = useState(false);
     const [isFirstStep, setIsFirstStep] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<string | null>(null); // État pour la sélection de l'option
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [responses, setResponses] = useState<string[]>([]); //  mistocke  réponses
+    // const [responses, setResponses] = useState<(string | null)[]>(Array(5).fill(null));
+
 
     const handleNext = () => {
-        if (!isLastStep) {
+        if (selectedOption) {
+            setResponses((prevResponses) => {
+                const newResponses = [...prevResponses];
+                newResponses[activeStep] = selectedOption;
+                console.log("Réponses choisies  :", newResponses);
+                return newResponses;
+            });
+        }
+
+       
+        if (activeStep === 4) {
+          
+            setResponses((prevResponses) => {
+                const newResponses = [...prevResponses];
+                newResponses[activeStep] = selectedOption; 
+                console.log("Réponses finales :", newResponses);
+                return newResponses;
+            });
+
+            // Appeler onFinish après un petit délai pour éviter l'erreur
+            setTimeout(() => {
+                onFinish();
+            }, 0); // Déclenchement après le rendu
+        } else {
+            // Passer à l'étape suivante
             setActiveStep((cur) => cur + 1);
-            setSelectedOption(null); // Réinitialiser la sélection pour chaque étape
+            setSelectedOption(null); // Réinitialiser l'option sélectionnée
         }
     };
+
 
     const handlePrev = () => {
         if (!isFirstStep) {
             setActiveStep((cur) => cur - 1);
-            setSelectedOption(null); // Réinitialiser la sélection pour chaque étape
+            setSelectedOption(null);
         }
     };
 
-    // Texte et options pour chaque étape
     const Questions = [
         "Avez-vous des douleurs à la tête ?",
         "Ressentez-vous une douleur ou une irritation dans la gorge ?",
         "Avez-vous de la fièvre ou des frissons ?",
         "Avez-vous des douleurs musculaires ou des courbatures ?",
-        "Avez-vous des nausées ou des vomissements ?",
-
+        "clique sur suivants poour voir le resultat ",
     ];
 
     const reponse = [
@@ -45,10 +69,8 @@ const Questiontest: React.FC = () => {
         ["Oui, j'ai de la fièvre", "Non, je n'ai pas de fièvre", "Parfois, j'ai des frissons"],
         ["Oui, j'ai des douleurs musculaires", "Non, je n'ai pas de douleurs", "Parfois, j'ai des courbatures"],
         ["Oui, j'ai des nausées", "Non, je n'ai pas de nausées", "Parfois, je me sens mal"],
-
     ];
 
-    // Configuration des étapes avec des icônes de santé
     const steps = [
         { icon: <HomeIcon className={`${s.icons}`} />, completedIcon: <FaCheck className={`${s.iconscheck}`} /> },
         { icon: <HeartIcon className={`${s.icons}`} />, completedIcon: <FaCheck className={`${s.iconscheck}`} /> },
@@ -59,7 +81,7 @@ const Questiontest: React.FC = () => {
 
     return (
         <Fragment>
-            <div className="w-full py-4 px-8  justify-center flex flex-col">
+            <div className="w-full py-4 px-0 lg:px-8 md:px-8 justify-center flex flex-col">
                 <div className={`${s.stepicon}`}>
                     <Stepper {...(undefined as any)} activeStep={activeStep} isLastStep={(value) => setIsLastStep(value)} isFirstStep={(value) => setIsFirstStep(value)}>
                         {steps.map((step, index) => (
@@ -70,12 +92,10 @@ const Questiontest: React.FC = () => {
                     </Stepper>
                 </div>
 
-                {/* Affichage du texte selon l'étape active */}
                 <div className="mt-8">
                     <h2 className="text-lg font-semibold">{Questions[activeStep]}</h2>
                 </div>
 
-                {/* Affichage des options (checkboxes) */}
                 <div className="mt-4">
                     {reponse[activeStep].map((option, index) => (
                         <div key={index} className="flex items-center mb-4 cursor-pointer">
@@ -101,36 +121,30 @@ const Questiontest: React.FC = () => {
                     ))}
                 </div>
 
+                <div className="mt-16 flex justify-between">
+                    <Button
+                        {...(undefined as any)}
+                        className={`bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-in-out shadow-md flex items-center justify-center ${isFirstStep ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        onClick={handlePrev}
+                        disabled={isFirstStep}
+                    >
+                        <FaArrowLeft className="mr-2" />
+                        Précédent
+                    </Button>
 
-<div className="mt-16 flex justify-between">
-    {/* Bouton Précédent */}
-    <Button
-        {...(undefined as any)}
-        className={`bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-in-out shadow-md flex items-center justify-center ${isFirstStep ? 'opacity-50 cursor-not-allowed' : ''}`}
-        onClick={handlePrev}
-        disabled={isFirstStep}
-    >
-        {/* Icône de flèche vers la gauche */}
-        <FaArrowLeft className="mr-2" /> {/* Espace entre l'icône et le texte */}
-        Précédent
-    </Button>
-
-    {/* Bouton Suivant */}
-    <Button
-        {...(undefined as any)}
-        className={`bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-green-300 transition-all duration-300 ease-in-out shadow-md flex items-center justify-center ${isLastStep || !selectedOption ? 'opacity-50 cursor-not-allowed' : ''}`}
-        onClick={handleNext}
-        disabled={isLastStep || !selectedOption}
-    >
-        Suivant
-        {/* Icône de flèche vers la droite */}
-        <FaArrowRight className="ml-2" /> {/* Espace entre le texte et l'icône */}
-    </Button>
-</div>
-
+                    <Button
+                        {...(undefined as any)}
+                        className={`bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-green-300 transition-all duration-300 ease-in-out shadow-md flex items-center justify-center ${isLastStep && !selectedOption ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        onClick={handleNext}
+                        disabled={!selectedOption}
+                    >
+                        {activeStep === 4 ? 'Résultat' : 'Suivant'}
+                        <FaArrowRight className="ml-2" />
+                    </Button>
+                </div>
             </div>
         </Fragment>
     );
-}
+};
 
 export default Questiontest;

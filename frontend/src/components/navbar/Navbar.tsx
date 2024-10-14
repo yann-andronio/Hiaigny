@@ -54,8 +54,8 @@ export default function Navbar() {
                 <NavLink to="/Hopitaux" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
                   Hôpitaux
                 </NavLink>
-                <NavLink to="/Ordonnance" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
-                  Ordonnance
+                <NavLink to="/reservation" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
+                  Reservations
                 </NavLink>
                 <NavLink to="/conseils" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
                   Conseils
@@ -121,8 +121,8 @@ export default function Navbar() {
           <DisclosureButton as={NavLink} to="/Hopitaux" className={({ isActive }: NavLinkProps) => (isActive ? "bg-[#4CAF50] text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-700 block hover:bg-[#4CAF50] hover:text-white rounded-md px-3 py-2 text-base font-medium")}>
             Hôpitaux
           </DisclosureButton>
-          <DisclosureButton as={NavLink} to="/Ordonnance" className={({ isActive }: NavLinkProps) => (isActive ? "bg-[#4CAF50] text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-700 block hover:bg-[#4CAF50] hover:text-white rounded-md px-3 py-2 text-base font-medium")}>
-            Ordonnance
+          <DisclosureButton as={NavLink} to="/reservation" className={({ isActive }: NavLinkProps) => (isActive ? "bg-[#4CAF50] text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-700 block hover:bg-[#4CAF50] hover:text-white rounded-md px-3 py-2 text-base font-medium")}>
+          Reservations
           </DisclosureButton>
           <DisclosureButton as={NavLink} to="/conseils" className={({ isActive }: NavLinkProps) => (isActive ? "bg-[#4CAF50] text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-700 block hover:bg-[#4CAF50] hover:text-white rounded-md px-3 py-2 text-base font-medium")}>
           Conseils

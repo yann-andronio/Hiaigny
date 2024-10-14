@@ -12,7 +12,7 @@ const Questiontest: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
     const [isLastStep, setIsLastStep] = useState(false);
     const [isFirstStep, setIsFirstStep] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
-    const [responses, setResponses] = useState<string[]>([]); //  mistocke  réponses
+    const [responses, setResponses] = useState<string[] | null>([]); //  mistocke  réponses
     // const [responses, setResponses] = useState<(string | null)[]>(Array(5).fill(null));
 
 

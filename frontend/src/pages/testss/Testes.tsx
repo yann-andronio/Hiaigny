@@ -54,7 +54,7 @@ const Testes: React.FC = () => {
                     <img src="./assets/image/medicaments/13.png" alt="Médicament 7" />
                 </div>
 
-                {/* Nouveau titre aligné au thème */}
+                {/* titre kely */}
 
                 {!showResults ? (
                     <div className="text-center mb-8">

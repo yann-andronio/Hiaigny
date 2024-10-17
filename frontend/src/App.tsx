@@ -9,6 +9,7 @@ import 'aos/dist/aos.css';
 import Conseils from './pages/conseils/Conseils';
 import Testes from './pages/testss/Testes';
 import Reservation from './pages/reservation/Reservation';
+import Chats from './pages/chats/Chats';
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/conseils" element={<Conseils />} />
           <Route path="/teste" element={<Testes />} />
           <Route path="/reservation" element={<Reservation />} />
+          <Route path="/chats" element={<Chats />} />
     
         </Routes>
       </BrowserRouter>

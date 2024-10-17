@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { FaHeartbeat, FaAppleAlt, FaRunning, FaBed, FaStethoscope, FaSmile, FaRegEye , FaFileMedical , FaRegSmileBeam , FaBriefcase } from 'react-icons/fa';
+import { FaHeartbeat, FaAppleAlt, FaRunning, FaBed, FaStethoscope, FaSmile, FaRegEye, FaFileMedical, FaRegSmileBeam, FaBriefcase } from 'react-icons/fa';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-
+// import { IoLogoNoSmoking } from "react-icons/io";
+import { TbSmokingNo } from "react-icons/tb";
 
 import s from './conseils.module.css';
 import Navbar from '../../components/navbar/Navbar';
@@ -14,6 +15,7 @@ interface ConseilSante {
     description: string;
     categorie: string;
     suggestion: string;
+    color?: string
 }
 
 const conseilsSanteData: ConseilSante[] = [
@@ -23,6 +25,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Boire suffisamment d'eau est essentiel pour votre santé. Visez au moins 2 litres par jour.",
         categorie: 'Hydratation',
         suggestion: "Découvrez notre guide gratuit sur les bienfaits de l'hydratation. Téléchargez-le maintenant !",
+        color: '#22C55E',
     },
     {
         titre: 'Mangez Équilibré',
@@ -30,6 +33,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Une alimentation équilibrée riche en fruits et légumes renforce votre système immunitaire.",
         categorie: 'Nutrition',
         suggestion: "Essayez nos recettes saines et faciles pour une alimentation équilibrée. Cliquez ici pour en savoir plus.",
+        color: '#ffbb33',
     },
     {
         titre: 'Faites de l’Exercice Régulièrement',
@@ -37,6 +41,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Pratiquez au moins 30 minutes d'activité physique chaque jour pour maintenir votre santé.",
         categorie: 'Activité physique',
         suggestion: "Avez-vous testé notre programme d'exercice à la maison ? Commencez gratuitement aujourd'hui.",
+        color: '#4299E1',
     },
     {
         titre: 'Dormez Suffisamment',
@@ -44,6 +49,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Un bon sommeil est crucial pour votre bien-être mental et physique. Visez 7 à 8 heures par nuit.",
         categorie: 'Bien-être',
         suggestion: "Téléchargez notre application de méditation pour améliorer la qualité de votre sommeil.",
+        color: '#22C55E',
     },
     {
         titre: 'Consultez Régulièrement Votre Médecin',
@@ -51,6 +57,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Des examens réguliers aident à détecter les problèmes de santé avant qu'ils ne deviennent graves.",
         categorie: 'Prévention',
         suggestion: "Planifiez votre prochain rendez-vous médical en ligne avec nos médecins certifiés.",
+        color: '#ffbb33',
     },
     {
         titre: 'Gérez Votre Stress',
@@ -58,13 +65,15 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Pratiquez la méditation ou le yoga pour réduire le stress et améliorer votre bien-être général.",
         categorie: 'Bien-être',
         suggestion: "Inscrivez-vous à notre cours gratuit de yoga en ligne pour une meilleure gestion du stress.",
+        color: '#4299E1',
     },
     {
         titre: 'Évitez le Tabac',
-        icone: <FaRegEye className="text-4xl text-[#FF6347]" />, // Remplacez par une autre icône
+        icone: <TbSmokingNo className="text-4xl text-[#FF6347]" />, // Remplacez par une autre icône
         description: "Cesser de fumer améliore considérablement votre santé et réduit le risque de maladies graves.",
         categorie: 'Prévention',
         suggestion: "Découvrez nos ressources sur l'arrêt du tabac et commencez votre parcours vers une vie sans fumée.",
+        color: '#FF6347',
     },
     {
         titre: 'Faites des Examens de Santé',
@@ -72,6 +81,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Des contrôles réguliers permettent de détecter tôt les maladies et d'assurer un suivi médical approprié.",
         categorie: 'Prévention',
         suggestion: "Planifiez votre bilan de santé annuel dès aujourd'hui pour rester en forme !",
+        color: '#1E90FF',
     },
     {
         titre: 'Adoptez une Routine de Soins de la Peau',
@@ -79,6 +89,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Une routine de soins adaptée à votre type de peau protège contre les agressions extérieures.",
         categorie: 'Beauté',
         suggestion: "Consultez notre guide de soins de la peau pour trouver les meilleurs produits pour vous.",
+        color: '#FFD700',
     },
     {
         titre: 'Équilibrez votre Vie Professionnelle et Personnelle',
@@ -86,6 +97,7 @@ const conseilsSanteData: ConseilSante[] = [
         description: "Un bon équilibre entre vie professionnelle et personnelle est essentiel pour votre bien-être.",
         categorie: 'Bien-être',
         suggestion: "Lisez nos conseils pour mieux gérer votre temps et réduire le stress au travail.",
+        color: '#6A5ACD',
     },
 ];
 
@@ -121,16 +133,16 @@ const Conseils: React.FC = () => {
                     </p> */}
 
                     {conseilsSanteData.map((items, index) => (
-                        <div key={index} className={`bg-white p-6 rounded-lg shadow-lg transition-transform duration-300 mb-8 border-l-4 ${index % 2 === 0 ? 'border-[#22C55E]' : 'border-[#4299E1]'}`} data-aos="fade-up" data-aos-duration="950" >
-                            <div className="flex items-center justify-between mb-4">
-                                <div className="flex items-center">
-                                    {items.icone}
-                                    <h3 className="text-xl font-semibold text-[#333333] ml-4">{items.titre}</h3>
-                                </div>
-                                <button onClick={() => activeopen(index)} className="text-xl text-[#4299E1] hover:underline focus:outline-none">
-                                    {open === index ? <FaChevronUp /> : <FaChevronDown />}
-                                </button>
+                        //    className={`bg-white p-6 rounded-lg shadow-lg transition-transform duration-300 mb-8 border-l-4 ${index % 2 === 0 ? 'border-[#22C55E]' : 'border-[#4299E1]'}`}
+                        <div key={index} className={`bg-white p-6 rounded-lg shadow-lg transition-transform duration-300 mb-8 border-l-4`} style={{ borderColor: items.color }} data-aos="fade-up" data-aos-duration="950">                            <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center">
+                                {items.icone}
+                                <h3 className="text-xl font-semibold text-[#333333] ml-4">{items.titre}</h3>
                             </div>
+                            <button onClick={() => activeopen(index)} className="text-xl text-[#4299E1] hover:underline focus:outline-none">
+                                {open === index ? <FaChevronUp /> : <FaChevronDown />}
+                            </button>
+                        </div>
                             <div className={`overflow-hidden transition-all duration-500 ${open === index ? 'max-h-screen' : 'max-h-0'}`}>
                                 <div className="text-left text-[#4A5568] mt-2 p-2 bg-[#F9FAFB] rounded-lg">
                                     <h4 className="text-lg font-bold mb-2">Détail du Conseil :</h4>

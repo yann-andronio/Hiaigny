@@ -36,14 +36,13 @@ const Questiontest: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
                 return newResponses;
             });
 
-            // Appeler onFinish après un petit délai pour éviter l'erreur
             setTimeout(() => {
                 onFinish();
-            }, 0); // Déclenchement après le rendu
+            }, 0); 
         } else {
-            // Passer à l'étape suivante
+            
             setActiveStep((cur) => cur + 1);
-            setSelectedOption(null); // Réinitialiser l'option sélectionnée
+            setSelectedOption(null); 
         }
     };
 
@@ -83,7 +82,7 @@ const Questiontest: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
         <Fragment>
             <div className="w-full py-4 px-0 lg:px-8 md:px-8 justify-center flex flex-col">
                 <div className={`${s.stepicon}`}>
-                    <Stepper {...(undefined as any)} activeStep={activeStep} isLastStep={(value) => setIsLastStep(value)} isFirstStep={(value) => setIsFirstStep(value)}>
+                    <Stepper  {...(undefined as any)} activeStep={activeStep} isLastStep={(value) => setIsLastStep(value)} isFirstStep={(value) => setIsFirstStep(value)}>
                         {steps.map((step, index) => (
                             <Step key={index} {...(undefined as any)} onClick={() => setActiveStep(index)} className="bg-green-500">
                                 {activeStep > index ? step.completedIcon : step.icon}

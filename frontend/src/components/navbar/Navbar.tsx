@@ -1,7 +1,9 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
-import { BellIcon } from "@heroicons/react/24/outline";
+import { BiMessageRoundedDots } from "react-icons/bi";
+import { RiMessage3Line } from "react-icons/ri";
+
 import s from "./navbar.module.css";
 import { useState, useEffect } from "react";
 
@@ -64,9 +66,9 @@ export default function Navbar() {
             </div>
 
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <Link to="/notification">
+              <Link to="/chats">
                 <button type="button" className="relative  p-1 text-gray-400 hover:text-white focus:outline-none mr-2">
-                  <BellIcon aria-hidden="true" className={`${s.notif} h-6 w-6`} />
+                  <BiMessageRoundedDots aria-hidden="true" className={`${s.notif} h-6 w-6`} />
                 </button>
               </Link>
               <Menu as="div" className="relative ml-3">

@@ -1,0 +1,8 @@
+.boxmessage::-webkit-scrollbar{
+    display: none;
+}
+
+.iconenvoyer{
+    top: 35px;
+    right: 42px;
+}

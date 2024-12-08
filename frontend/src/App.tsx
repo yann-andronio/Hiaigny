@@ -10,6 +10,7 @@ import Conseils from './pages/conseils/Conseils';
 import Testes from './pages/testss/Testes';
 import Reservation from './pages/reservation/Reservation';
 import Chats from './pages/chats/Chats';
+import DoctorPage from './pages/doctor/DoctorPage';
 
 function App() {
   useEffect(() => {

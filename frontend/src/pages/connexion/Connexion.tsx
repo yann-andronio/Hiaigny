@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
@@ -9,10 +9,14 @@ import formlottie from "../../lotties/1.json";
 import { FcGoogle } from "react-icons/fc";
 import { HiOutlineMail, HiOutlineLockClosed } from "react-icons/hi";
 import s from "./connexion.module.css";
+import { MdErrorOutline } from 'react-icons/md'
+import { motion } from 'framer-motion';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Connexion: React.FC = () => {
-
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -29,26 +33,28 @@ const Connexion: React.FC = () => {
                 .required("Le mot de passe est requis"),
         }),
         onSubmit: (values) => {
-            axios.post('url nra martinoh', values)
-                .then((response) => {
-
-                    if (response.data) {
-                        console.log("Connexion réussie : ", response.data);
-                        navigate('/home');
+            setIsLoading(true);
+            axios.post('http://localhost:5000/api/login', values)
+                .then((res) => {
+                    setIsLoading(false);
+                    if (res.data) {
+                        console.log("Connexion réussie : ", res.data);
+                        navigate('/');
                     } else {
-                        alert('Veuillez vérifier vos informations');
+                        setErrorMessage('Veuillez vérifier vos informations');
                     }
                 })
                 .catch((error) => {
-                    console.log("Erreur :", error);
-
+                    console.log("l erruer est : ", error)
+                    setErrorMessage('Veuillez vérifier vos informations');
                 });
         },
-
     });
+
     return (
         <Fragment>
             <div className={`${s.screen} overflow-hidden`}>
+                
                 <div className={`${s.sary} z-50 hidden lg:block md:w-1/2 lottie-background`}>
                     <div className={`${s.lotti}`}>
                         <Lottie animationData={formlottie} />
@@ -73,13 +79,18 @@ const Connexion: React.FC = () => {
                             <h1 className="text-3xl font-bold text-gray-800">Logo</h1>
                         </div>
 
-                        <div className="flex items-center justify-between pt-4 mb-4">
-                            <h3 className="text-gray-700 text-lg">Vous n'avez pas de compte ?</h3>
-                            <Link className={`text-blue-600 font-semibold hover:text-green-600 transition-colors duration-300`} to="/inscription">
-                                Créer un compte
-                            </Link>
-
-                        </div>
+                        {errorMessage && (
+                            <motion.div
+                                className="flex items-center text-red-500 text-sm mb-4 bg-red-100 p-3 rounded-md"
+                                initial={{ opacity: 0, y: 20 }} // Départ avec opacité 0 et en dessous
+                                animate={{ opacity: 1, y: 0 }}  // Apparition avec opacité 1 et position normale
+                                exit={{ opacity: 0, y: -20 }}   // Disparition vers le haut
+                                transition={{ duration: 0.5 }}  // Durée de l'animation
+                            >
+                                <MdErrorOutline className="w-5 h-5 mr-2" />
+                                {errorMessage}
+                            </motion.div>
+                        )}
 
                         <div className="mb-6 relative">
                             <label htmlFor="email" className={`block text-sm font-bold mb-2 text-gray-700`}>
@@ -121,44 +132,6 @@ const Connexion: React.FC = () => {
                             {formik.touched.password && formik.errors.password ? (
                                 <div className={`text-xs italic text-red-500`}>{formik.errors.password}</div>
                             ) : null}
-                        </div>
-
-                        {/* <div className="mb-4">
-                            <label className="inline-flex items-center text-gray-700">
-                                <input
-                                    type="radio"
-                                    name="role"
-                                    value="patient"
-                                    checked={formik.values.role === 'patient'}
-                                    onChange={formik.handleChange}
-                                    className={`form-radio text-indigo-600 h-5 w-5 ${s.formradio}`}
-                                />
-                                <span className="ml-2 text-gray-700">Patient</span>
-                            </label>
-                            <label className="inline-flex items-center text-gray-700 ml-4">
-                                <input
-                                    type="radio"
-                                    name="role"
-                                    value="doctor"
-                                    checked={formik.values.role === 'doctor'}
-                                    onChange={formik.handleChange}
-                                    className={`form-radio text-indigo-600 h-5 w-5 ${s.formradio}`}
-                                />
-                                <span className="ml-2 text-gray-700">Docteur</span>
-                            </label>
-                        </div> */}
-
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="flex-1 border-b border-gray-300 h-px mr-2" />
-                            <span className="text-gray-700">ou</span>
-                            <div className="flex-1 border-b border-gray-300 h-px ml-2" />
-                        </div>
-
-                        <div className="flex justify-between mb-4 text-center items-center">
-                            <a href="#" className={`flex justify-center items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full`}>
-                                <FcGoogle className="w-6 h-6 mr-2" />
-                                Se connecter avec Google
-                            </a>
                         </div>
 
                         <button

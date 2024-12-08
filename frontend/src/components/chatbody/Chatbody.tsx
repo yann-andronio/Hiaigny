@@ -30,7 +30,7 @@ const Chatbody: React.FC = () => {
         { id: 6, content: "What's the agenda for today?", sender: "other", isUser: false },
     ]);
 
-    // État pour la recherche
+    
     const [searchUsers, setSearchUsers] = useState<string>("");
 
     const formik = useFormik({
@@ -41,13 +41,14 @@ const Chatbody: React.FC = () => {
             message: Yup.string().required('Le message est requis'),
         }),
         onSubmit: (values) => {
-            // Ajouter le message à la liste des messages
+
+            // ajout de message
             setMessages([...messages, { id: messages.length + 1, content: values.message, sender: "user", isUser: true }]);
             formik.resetForm();
         },
     });
 
-    // Liste d'utilisateurs avec des aperçus de messages
+   
     const [users] = useState<User[]>([
         { id: 1, name: "John Doe", messagePreview: "Hey, how are you?", phoneNumber: "(+261) 34 123 4567", email: "john@example.com" },
         { id: 2, name: "Jane Smith", messagePreview: "I'm available for the meeting.", phoneNumber: "(+261) 34 234 5678", email: "jane@example.com" },
@@ -61,12 +62,12 @@ const Chatbody: React.FC = () => {
 
     const [selectedUser, setSelectedUser] = useState<User | null>(users[0]);
 
-    // Filtrer les utilisateurs en fonction du terme de recherche
+    
     const filteredUsers = users.filter(user =>
         user.name.toLowerCase().includes(searchUsers.toLowerCase())
     );
 
-    // Fonction pour gérer le clic sur un utilisateur
+   
     const handleUserClick = (user: User) => {
         setSelectedUser(user);
     };
@@ -178,7 +179,7 @@ const Chatbody: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Group Info */}
+                    {/*  Info user */}
                     <div className="w-2/5 border-l-2 h-full bg-white">
                         {selectedUser && (
                             <>

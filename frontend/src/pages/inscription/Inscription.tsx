@@ -34,6 +34,7 @@ interface FormErrors {
 const Inscription: FC = () => {
     const [role, setRole] = useState<'patient' | 'doctor'>('patient');
     const [doctorhita, setdoctorhita] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState(false);
     const Navigate = useNavigate();
 
     const [inputs, setInputs] = useState<FormValues>({
@@ -98,7 +99,7 @@ const Inscription: FC = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); 
         if (validate()) {
-            axios.post('url nra martino', inputs)
+            axios.post('http://localhost:5000/api/register', inputs)
                 .then((response) => {
                     console.log("succes:", response.data);
                     Navigate('/')

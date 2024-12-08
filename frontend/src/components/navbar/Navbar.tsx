@@ -53,9 +53,9 @@ export default function Navbar() {
                 <NavLink to="/" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
                   Accueil
                 </NavLink>
-                <NavLink to="/Hopitaux" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
+                {/* <NavLink to="/Hopitaux" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
                   Hôpitaux
-                </NavLink>
+                </NavLink> */}
                 <NavLink to="/reservation" className={({ isActive }: NavLinkProps) => (isActive ? s.activeLink : s.inactiveLink)}>
                   Reservations
                 </NavLink>
